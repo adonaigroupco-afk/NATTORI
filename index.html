@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ttori Shop – Tu Tienda, Todo Para Ti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-dark: #9A7A2E;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark2: #1A1A1A;
+      --white: #FFFFFF;
+      --off-white: #F9F6F0;
+      --gray: #888888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black) !important;
+      padding: 10px 26px;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      transition: opacity 0.3s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 60px 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 0.8rem;
+      color: var(--gray);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      border: none;
+      padding: 16px 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 2px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 16px 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 2px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .serum-mockup {
+      width: 320px;
+      height: 480px;
+      position: relative;
+    }
+
+    .serum-bottle {
+      width: 160px;
+      height: 380px;
+      background: linear-gradient(160deg, #1a1a1a 0%, #2d2d2d 40%, #1a1a1a 100%);
+      border-radius: 12px 12px 20px 20px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow:
+        inset 3px 0 15px rgba(201,168,76,0.15),
+        inset -3px 0 15px rgba(201,168,76,0.05),
+        0 30px 80px rgba(0,0,0,0.8),
+        0 0 60px rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+
+    .serum-bottle::before {
+      content: '';
+      position: absolute;
+      top: -28px; left: 50%; transform: translateX(-50%);
+      width: 44px; height: 32px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .serum-bottle::after {
+      content: '';
+      position: absolute;
+      top: 8px; left: 50%; transform: translateX(-50%);
+      width: 90%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .serum-label {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      text-align: center;
+      width: 80%;
+    }
+
+    .serum-label-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .serum-label-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      display: block;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .serum-label-line {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin: 0 auto 8px;
+    }
+
+    .serum-label-vol {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+
+    .glow-ring {
+      position: absolute;
+      bottom: -20px; left: 50%; transform: translateX(-50%);
+      width: 180px; height: 30px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .floating-tag {
+      position: absolute;
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.7rem;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .tag1 { top: 60px; right: 0; }
+    .tag2 { bottom: 80px; left: -20px; }
+
+    .tag-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats {
+      background: var(--off-white);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--black);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--gold); }
+
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .stat-divider {
+      width: 1px; height: 50px;
+      background: rgba(201,168,76,0.3);
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 60px; }
+
+    .section-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-title em { color: var(--gold); font-style: italic; }
+
+    .section-line {
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 24px;
+    }
+
+    /* ── PRODUCT HERO ── */
+    .product-section {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .product-visual {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-circle {
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, rgba(201,168,76,0.12), rgba(201,168,76,0.03) 70%);
+      border: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-circle::before {
+      content: '';
+      position: absolute;
+      inset: 15px;
+      border-radius: 50%;
+      border: 1px dashed rgba(201,168,76,0.2);
+    }
+
+    .big-bottle {
+      width: 130px; height: 300px;
+      background: linear-gradient(160deg, #222 0%, #333 45%, #1a1a1a 100%);
+      border-radius: 10px 10px 18px 18px;
+      border: 1px solid rgba(201,168,76,0.35);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(201,168,76,0.1);
+    }
+
+    .big-bottle::before {
+      content: '';
+      position: absolute;
+      top: -22px; left: 50%; transform: translateX(-50%);
+      width: 36px; height: 26px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .big-bottle-label {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      text-align: center;
+      width: 85%;
+    }
+
+    .big-bottle-label .brand { font-size: 0.55rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+    .big-bottle-label .name { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--white); font-weight: 600; display: block; margin: 5px 0; }
+    .big-bottle-label .divider { width: 30px; height: 1px; background: var(--gold); margin: 6px auto; }
+    .big-bottle-label .ml { font-size: 0.52rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; }
+
+    .product-info {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .product-info .section-title { color: var(--white); }
+
+    .product-info p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+
+    .ingredients-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .ingredient-pill {
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      padding: 7px 16px;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    .price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .price-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .price-old {
+      font-size: 1.2rem;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+
+    .price-badge {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    /* ── BENEFITS ── */
+    .benefits-section { background: var(--off-white); }
+
+    .benefits-header { text-align: center; margin-bottom: 70px; }
+
+    .benefits-header .section-line { margin: 0 auto 24px; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 40px 32px;
+      border-radius: 4px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      border-color: rgba(201,168,76,0.4);
+    }
+
+    .benefit-card:hover::before { transform: scaleX(1); }
+
+    .benefit-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 1.6rem;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .benefit-card p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .how-section .section-line { margin: 0 auto 24px; }
+
+    .steps-grid {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 200px;
+      padding: 0 30px;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -10px;
+      top: 30px;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .step-num {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 1px solid rgba(201,168,76,0.4);
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--black); }
+
+    .testimonials-section .section-title { color: var(--white); }
+
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 36px 30px;
+      border-radius: 4px;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .author-loc {
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--black) 0%, #1a1500 50%, var(--black) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section .section-title { color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0 auto 44px;
+      line-height: 1.9;
+    }
+
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 50px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 4px;
+    }
+
+    .footer-tagline {
+      font-size: 0.65rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 1px;
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .hero-visual { display: none; }
+      section { padding: 70px 24px; }
+      .stats { padding: 30px 24px; }
+      .stat-divider { display: none; }
+      .product-section { gap: 50px; }
+      footer { padding: 40px 24px; flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 999;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    .whatsapp-btn svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce-bar {
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+      color: var(--black);
+      text-align: center;
+      padding: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar">✦ Envío gratis en compras mayores a $50 · Resultados visibles en 14 días garantizados ✦</div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="nav-logo">TTORI</a>
+    <ul class="nav-links">
+      <li><a href="#producto">Producto</a></li>
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#como-usar">Cómo Usar</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#comprar" class="nav-cta">Comprar Ahora</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Colección Premium Antiedad</div>
+      <p class="hero-sub">Ttori Shop — Tu tienda, todo para ti</p>
+      <h1>Recupera tu<br><span>Juventud</span><br>Natural</h1>
+      <p>Nuestro Sérum Antiedad de última generación combina retinol, vitamina C y péptidos bioactivos para transformar tu piel desde las primeras semanas.</p>
+      <div class="hero-btns">
+        <a href="#comprar" class="btn-primary">Obtener el Sérum</a>
+        <a href="#producto" class="btn-outline">Descubrir más</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="serum-mockup">
+        <div class="serum-bottle">
+          <div class="serum-label">
+            <span class="serum-label-brand">Ttori Shop</span>
+            <span class="serum-label-name">Sérum<br>Antiedad</span>
+            <div class="serum-label-line"></div>
+            <span class="serum-label-vol">30 ml · Pro Formula</span>
+          </div>
+        </div>
+        <div class="glow-ring"></div>
+
+        <div class="floating-tag tag1">
+          <span class="tag-value">94%</span>
+          Pieles con mejora visible
+        </div>
+        <div class="floating-tag tag2">
+          <span class="tag-value">-40%</span>
+          Reducción de arrugas
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats">
+    <div class="stat-item fade-in">
+      <span class="stat-num">10<span>K+</span></span>
+      <div class="stat-label">Clientas Felices</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item fade-in">
+      <span class="stat-num">94<span>%</span></span>
+      <div class="stat-label">Satisfacción</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item fade-in">
+      <span class="stat-num">14</span>
+      <div class="stat-label">Días para ver resultados</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item fade-in">
+      <span class="stat-num">3<span>X</span></span>
+      <div class="stat-label">Más hidratación</div>
+    </div>
+  </div>
+
+  <!-- PRODUCT SECTION -->
+  <section class="product-section" id="producto">
+    <div class="product-visual fade-in">
+      <div class="product-circle">
+        <div class="big-bottle">
+          <div class="big-bottle-label">
+            <span class="brand">TTORI SHOP</span>
+            <span class="name">Sérum<br>Antiedad</span>
+            <div class="divider"></div>
+            <span class="ml">30 ML · PRO FORMULA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-info fade-in">
+      <span class="section-tag">Producto Estrella</span>
+      <h2 class="section-title">Sérum Antiedad<br><em>Pro Formula</em></h2>
+      <div class="section-line"></div>
+      <p>Formulado con los ingredientes más potentes del mercado, nuestro sérum penetra en las capas profundas de la piel para estimular la producción de colágeno, eliminar líneas de expresión y restaurar el brillo natural que mereces.</p>
+
+      <div class="ingredients-list">
+        <span class="ingredient-pill">Retinol 0.3%</span>
+        <span class="ingredient-pill">Vitamina C</span>
+        <span class="ingredient-pill">Ácido Hialurónico</span>
+        <span class="ingredient-pill">Péptidos</span>
+        <span class="ingredient-pill">Niacinamida</span>
+        <span class="ingredient-pill">Extracto de Rosa</span>
+      </div>
+
+      <div class="price-block">
+        <span class="price-main">$45</span>
+        <span class="price-old">$68</span>
+        <span class="price-badge">34% OFF</span>
+      </div>
+
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#comprar" class="btn-primary">Comprar Ahora</a>
+        <a href="#como-usar" class="btn-outline" style="color:rgba(255,255,255,0.7)">Ver Cómo Usar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits-section" id="beneficios">
+    <div class="benefits-header fade-in">
+      <span class="section-tag">¿Por qué elegirnos?</span>
+      <h2 class="section-title">Beneficios que <em>Transforman</em></h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">✨</div>
+        <h3>Brillo Instantáneo</h3>
+        <p>Desde la primera aplicación notarás tu piel más iluminada, uniforme y llena de vida.</p>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🌿</div>
+        <h3>100% Dermatológico</h3>
+        <p>Fórmula testada y certificada. Sin parabenos, sin sulfatos. Apto para todo tipo de piel.</p>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">💧</div>
+        <h3>Hidratación Profunda</h3>
+        <p>El ácido hialurónico retiene hasta 1000x su peso en agua, rellenando arrugas y líneas finas.</p>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🔬</div>
+        <h3>Fórmula Científica</h3>
+        <p>Desarrollada con las últimas investigaciones en biotecnología cutánea para resultados reales.</p>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🌙</div>
+        <h3>Acción 24 Horas</h3>
+        <p>Trabaja de día y de noche para que despiertes con una piel renovada cada mañana.</p>
+      </div>
+      <div class="benefit-card fade-in">
+        <div class="benefit-icon">🏆</div>
+        <h3>Resultados Garantizados</h3>
+        <p>Si en 30 días no ves resultados, te devolvemos tu dinero. Sin preguntas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="como-usar">
+    <div class="fade-in">
+      <span class="section-tag">Rutina Simple</span>
+      <h2 class="section-title">3 Pasos hacia tu <em>Mejor Piel</em></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="steps-grid">
+      <div class="step fade-in">
+        <div class="step-num">1</div>
+        <h3>Limpia</h3>
+        <p>Lava tu rostro con tu limpiador habitual y sécalo con suaves toquecitos.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">2</div>
+        <h3>Aplica</h3>
+        <p>2-3 gotas del sérum sobre frente, mejillas y cuello. Masajea en movimientos circulares.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">3</div>
+        <h3>Hidrata</h3>
+        <p>Sella con tu crema hidratante favorita. ¡Listo! Repite mañana y noche.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonios">
+    <div class="testimonials-header fade-in">
+      <span class="section-tag">Historias Reales</span>
+      <h2 class="section-title">Lo que dicen nuestras <em>Clientas</em></h2>
+      <div class="section-line" style="margin:0 auto 24px;"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"Llevaba años buscando algo que realmente funcionara. En 3 semanas mis arrugas se suavizaron notablemente. ¡Mi piel se ve 10 años más joven!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div>
+            <div class="author-name">María González</div>
+            <div class="author-loc">Bogotá, Colombia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"El mejor sérum que he probado. Mi piel está más firme, luminosa e hidratada. Ya lo compré por tercera vez y no lo cambio por nada."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Andrea Martínez</div>
+            <div class="author-loc">Ciudad de México, MX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="stars">★★★★★</div>
+        <p>"Increíble calidad y precio. Mis amigas me preguntan qué hago diferente. La atención al cliente es excelente. 100% recomendado."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div>
+            <div class="author-name">Laura Sánchez</div>
+            <div class="author-loc">Madrid, España</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" id="comprar">
+    <div class="fade-in">
+      <span class="section-tag">Oferta Limitada</span>
+      <h2 class="section-title">Tu Piel Merece<br><em>lo Mejor</em></h2>
+      <p>Únete a más de 10,000 mujeres que ya transformaron su piel con Ttori Shop. Envío gratis hoy.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/1234567890?text=Hola!%20Quiero%20pedir%20el%20Sérum%20Antiedad%20de%20Ttori%20Shop" class="btn-primary" target="_blank">Comprar por WhatsApp</a>
+        <a href="mailto:tienda@ttori.shop" class="btn-outline" style="color: rgba(255,255,255,0.7);">Enviar Consulta</a>
+      </div>
+      <p style="margin-top:28px; font-size:0.72rem; opacity:0.4; letter-spacing:2px;">✦ PAGO SEGURO · ENVÍO TRACKEABLE · DEVOLUCIÓN GARANTIZADA ✦</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">TTORI SHOP</div>
+      <div class="footer-tagline">Tu tienda, todo para ti.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Política de Privacidad</a></li>
+      <li><a href="#">Términos y Condiciones</a></li>
+      <li><a href="#">Devoluciones</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Ttori Shop. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/1234567890?text=Hola!%20Me%20interesa%20el%20Sérum%20Antiedad" class="whatsapp-btn" target="_blank" title="Chatea con nosotros">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
